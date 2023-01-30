@@ -97,4 +97,11 @@ ORDER BY yr DESC, winner;
 SELECT winner, subject
 FROM nobel
 WHERE yr = 1984
-ORDER BY subject IN('Physics','Chemistry'), subject, winner;
+ORDER BY subject IN('Physics','Chemistry'), subject, winner; -- not the standard SQL syntax. Follow the below one instead.
+
+SELECT winner, subject
+FROM nobel
+WHERE yr = 1984
+ORDER BY 
+CASE WHEN subject IN('Physics','Chemistry') THEN 1 ELSE 0 END, 
+subject, winner;
